@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ツムツム風ゲーム</title>
+<style>
+body { text-align:center; font-family:sans-serif; background:#222; color:white; }
+#game { width:92vw; max-width:420px; margin:auto; display:grid; grid-template-columns:repeat(9,1fr); gap:3px; }
+.tsum { width:100%; aspect-ratio:1; border-radius:50%; }
+.selected { outline:2px solid white; }
+button { margin:5px; padding:10px; }
+</style>
+</head>
+<body>
+
+<h2>スコア: <span id="score">0</span></h2>
+<p>時間: <span id="time">60</span></p>
+<p>コンボ: <span id="combo">0</span></p>
+<button onclick="useSkill()">スキル</button>
+
+<div id="game"></div>
+
+<script>
+const game = document.getElementById("game");
+let score=0, time=60, combo=0;
+const width=9;
+const colors=["red","blue","green","yellow"];
+let tsums=[];
+
+function createTsum(){
+  const d=document.createElement("div");
+  d.className="tsum";
+  const c=colors[Math.floor(Math.random()*colors.length)];
+  d.style.background=c;
+  game.appendChild(d);
+}
+
+for(let i=0;i<width*width;i++) createTsum();
+
+function useSkill(){
+  alert("スキル発動！");
+}
+</script>
+
+</body>
+</html>
